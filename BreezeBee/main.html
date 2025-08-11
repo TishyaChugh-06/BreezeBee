@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BreezeBee- Live</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+  <button id="theme-toggle" class="theme-toggle">🌙 Dark Mode</button>
+  <!-- Add this button inside your main container or below the existing buttons -->
+
+  <p id="greeting" class="greeting"></p>
+  <script>
+    function showGreeting() {
+      const greetingElement = document.getElementById('greeting');
+      const now = new Date();
+      const hour = now.getHours();
+      let greeting;
+  
+      if (hour < 12) {
+        greeting = "☀ Good Morning!";
+      } else if (hour < 18) {
+        greeting = "🌤 Good Afternoon!";
+      } else {
+        greeting = "🌙 Good Evening!"; 
+      }
+  
+      greetingElement.textContent = greeting;
+    } 
+  
+    // Call function when page loads
+    window.onload = showGreeting;
+  </script> 
+
+  <div class="overlay">
+    <div class="weather-container">
+      <h1 class="title">🌦 BreezeBee</h1>
+      <p id="datetime" class="datetime"></p>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Enter city or PIN code">
+        <button onclick="getWeather()">Search</button>
+      </div>
+      <div class="button-group">
+        <button class="location-btn" onclick="getUserLocation()">📍 Use My Location</button>
+        <a href="5dayforecast.html" class="hero-button">📅 5-Day Forecast</a>
+        <!-- Weather Vibe Button -->
+        <button class="weather-vibe-btn" onclick="location.href='chart.html'">
+          🌦 Weather Chart
+      
+          
+        </button>
+        <a href="about.html" class="about-btn">About Us</a>
+        <!-- your weather container -->
+        <button class="moon-phase-btn" onclick="location.href='moonphases.html'">
+          🌑 Moon Phases
+        </button>
+        <div class="feels-like-button">
+          🌡 Feels Like: <span id="feels-like">--°C</span>
+        </div>
+        <button id="showAQI" onclick="displayAQI()" aria-label="Show Air Quality Index">🌿 Air Quality Index (AQI)</button>
+        <!-- Speak Weather Button -->
+        <button id="speakWeather" onclick="speakWeather()" aria-label="Read weather aloud">🔊 Read Weather</button>
+      </div>
+      <script src="script.js"></script>
+      
+        <!-- your script at the end before </body> -->
+        <script src="script.js"></script>
+          <!-- your script at the end before </body> -->
+          <script src="script.js"></script>
+        <div class="weather-box hidden" id="weatherBox">
+          <h2 id="location"></h2>
+          <img id="icon" src="" alt="Weather Icon">
+          <p id="temp"></p>
+          <p id="desc"></p>
+          <p id="quote"></p>
+          <p id="clouds"></p>
+        
+          <!-- Temperature toggle button -->
+          <button id="toggleTemp" onclick="toggleTemperature()">Switch to °F</button>
+        </div>
+
+        <script>
+          window.onload = function() {
+            // your code here
+          };
+        </script>
+        <script src="script.js"></script>
+        <script>// Theme toggle logic
+          const toggleBtn = document.getElementById('theme-toggle');
+          const body = document.body;
+          
+          // Check saved theme on load
+          const savedTheme = localStorage.getItem('theme');
+          if (savedTheme) {
+            body.classList.add(savedTheme);
+            updateToggleText(savedTheme);
+          } else {
+            body.classList.add('light'); // default to light theme
+          }
+          
+          // Toggle button click
+          toggleBtn.addEventListener('click', () => {
+            if (body.classList.contains('light')) {
+              body.classList.replace('light', 'dark');
+              localStorage.setItem('theme', 'dark');
+              updateToggleText('dark');
+            } else {
+              body.classList.replace('dark', 'light');
+              localStorage.setItem('theme', 'light');
+              updateToggleText('light');
+            }
+          });
+          
+          // Update button text/icon
+          function updateToggleText(theme) {
+            toggleBtn.textContent = theme === 'dark' ? '🌞 Light Mode' : '🌙 Dark Mode';
+          }</script>
+                
+    </body>
+  
+    </html>
